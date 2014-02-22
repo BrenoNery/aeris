@@ -1,5 +1,5 @@
 package br.com.caelum.aeris.entity;
-//Teste Git ssh
+
 import java.util.Date;
 import javax.persistence.*;
 
