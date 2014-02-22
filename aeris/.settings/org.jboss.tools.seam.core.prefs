@@ -1,0 +1,16 @@
+action.package=org.caelum.aeris.session
+action.sources=/aeris-ejb/ejbModule
+eclipse.preferences.version=1
+model.package=org.caelum.aeris.entity
+model.sources=/aeris-ejb/ejbModule
+seam.ear.project=aeris-ear
+seam.ejb.project=aeris-ejb
+seam.project.connection.profile=oracle_10g
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/aeris/WebContent
+seam.runtime.name=seam-2.2.2
+seam.test.creating=true
+seam.test.project=aeris-test
+test.package=org.caelum.aeris.test
+test.sources=/aeris-test/test-src
