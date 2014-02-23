@@ -10,17 +10,23 @@
 			<ui:define name="body">
 				<h1>Cadastro de Trechos</h1>
 					<h:form>
+						<h:panelGrid>
 					
-					Origem:
-					<h:selectOneMenu>
-						<f:selectItems value="#{localidades}"/>
-					</h:selectOneMenu>
+							Origem:
+							<h:selectOneMenu value="#{trechoHandler.trecho.origem}">
+								<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
+												noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
+							</h:selectOneMenu>
+							
+							Destino:
+							<h:selectOneMenu value="#{trechoHandler.trecho.destino}">
+								<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
+												noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
+							</h:selectOneMenu>
+							
+							<h:commandButton value="Salvar" actionListener="#{trechoHandler.salvar}" />
 					
-					Destino:
-					<h:selectOneMenu>
-						<f:selectItems value="#{localidades}"/>
-					</h:selectOneMenu>
-					
+						</h:panelGrid>
 					</h:form>
 			</ui:define>
 	</ui:composition>
