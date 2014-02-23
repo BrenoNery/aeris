@@ -10,7 +10,17 @@
 			<ui:define name="body">
 				<h1>Cadastro de Trechos</h1>
 					<h:form>
-					<!-- Conteudo virá aqui -->
+					
+					Origem:
+					<h:selectOneMenu>
+						<f:selectItems value="#{localidadesHandler.localidades}"/>
+					</h:selectOneMenu>
+					
+					Destino:
+					<h:selectOneMenu>
+						<f:selectItems value="#{localidadesHandler.localidades}"/>
+					</h:selectOneMenu>
+					
 					</h:form>
 			</ui:define>
 	</ui:composition>
