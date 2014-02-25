@@ -28,6 +28,23 @@
 					
 						</h:panelGrid>
 					</h:form>
+					
+					<h:form>
+						<rich:dataTable value="#{trechos}" var="t" style="width: 60%">
+							<rich:column>
+								<f:facet name="header">Id</f:facet>
+								<h:outputText value="#{t.id}"/>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">Origem</f:facet>
+								<h:outputText value="#{t.origem.nome}"/>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">Destino</f:facet>
+								<h:outputText value="#{t.destino.nome}"/>
+							</rich:column>
+						</rich:dataTable>
+					</h:form>
 			</ui:define>
 	</ui:composition>
 
