@@ -24,6 +24,8 @@
 												noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
 							</h:selectOneMenu>
 							
+							<h:inputHidden value="#{trechoHandler.trecho.id}" />
+							
 							<h:commandButton value="Salvar" actionListener="#{trechoHandler.salvar}" />
 					
 						</h:panelGrid>
@@ -42,6 +44,18 @@
 							<rich:column>
 								<f:facet name="header">Destino</f:facet>
 								<h:outputText value="#{t.destino.nome}"/>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">Editar</f:facet>
+								<h:commandLink action="#{trechoHandler.editar}">
+									<h:outputText value="editar" />
+								</h:commandLink>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">Remover</f:facet>
+								<h:commandLink action="#{trechoHandler.remover}">
+									<h:outputText value="remover" />								
+								</h:commandLink>
 							</rich:column>
 						</rich:dataTable>
 					</h:form>
