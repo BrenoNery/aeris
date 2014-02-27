@@ -5,15 +5,23 @@ package br.com.caelum.aeris.logic;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory; // Import da anotação "@Factory" (Utilizando o padrão Factory)
 import org.jboss.seam.annotations.Name; // Import da anotação "@Name" (Criando um ManagedBean)
+// Imports referentes a API de log ("commom-logging")
+import org.jboss.seam.log.*;
+import org.jboss.seam.annotations.Logger;
 
 import br.com.caelum.aeris.entity.Localidade;
 
 @Name("localidadesHandler")
 public class LocalidadesHandler {
 	
+	@Logger
+	private Log log;
+	
 	@Factory(value="localidades", scope=ScopeType.APPLICATION)
 	public Localidade[] initLocalidades() {
-		System.out.println("Iniciando localidades");		
+		
+		//System.out.println("Iniciando localidades");
+		log.info("Iniciando lovalidades");
 		return Localidade.values();
 	}
 }
