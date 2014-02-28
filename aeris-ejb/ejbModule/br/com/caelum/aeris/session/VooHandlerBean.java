@@ -22,21 +22,31 @@ import org.jboss.seam.log.Log;
  */
 import org.jboss.seam.annotations.Destroy;
 
+import br.com.caelum.aeris.entity.Trecho;
+
 
 @Stateful
 
 @Local(VooHandler.class)
 @Name("vooHandler")
-@Scope(ScopeType.EVENT)
+@Scope(ScopeType.SESSION)
 public class VooHandlerBean implements VooHandler {
 
 	@Logger
 	private Log log;
 	
-	public String manipulaVoos() {		
+	private Trecho trechoSelecionado;
+	
+	public String manipulaVoos(Trecho trecho) {
+		this.trechoSelecionado = trecho;
+		log.info("Trecho selecionado: #0", this.trechoSelecionado);
 		return "/voos.xhtml";
 	}
-
+	
+	public Trecho getTrechoSelecionado() {
+		return this.trechoSelecionado;
+	}
+	
 	@Remove
 	@Destroy
 	public void destruicaoObrigatoria() {

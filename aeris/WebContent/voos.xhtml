@@ -7,12 +7,11 @@
       xmlns:s="http://jboss.com/products/seam/taglib">
 
 	<ui:composition template="layout/template.xhtml">
-			<ui:define name="body">
-			
+			<ui:define name="body">			
 				<rich:panel>
 					<h1>Cadastro de Voos</h1>
-				</rich:panel>
-				
+					#{vooHandler.trechoSelecionado.origem} - #{vooHandler.trechoSelecionado.destino}
+				</rich:panel>				
 			</ui:define>
 	</ui:composition>
 
