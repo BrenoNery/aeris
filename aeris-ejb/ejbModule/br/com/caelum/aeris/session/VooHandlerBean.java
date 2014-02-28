@@ -12,6 +12,7 @@ import javax.ejb.Remove;
  */
 import javax.ejb.Stateful;
 
+import org.jboss.seam.annotations.Begin; // Anotação responsável identificar o método que inicia uma conversação long (Log Running Conversation)
 import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.ScopeType;
@@ -29,7 +30,7 @@ import br.com.caelum.aeris.entity.Trecho;
 
 @Local(VooHandler.class)
 @Name("vooHandler")
-@Scope(ScopeType.SESSION)
+@Scope(ScopeType.CONVERSATION)
 public class VooHandlerBean implements VooHandler {
 
 	@Logger
@@ -37,6 +38,7 @@ public class VooHandlerBean implements VooHandler {
 	
 	private Trecho trechoSelecionado;
 	
+	@Begin
 	public String manipulaVoos(Trecho trecho) {
 		this.trechoSelecionado = trecho;
 		log.info("Trecho selecionado: #0", this.trechoSelecionado);
