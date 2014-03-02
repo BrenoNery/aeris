@@ -21,13 +21,13 @@ public class Voo {
 	@Temporal(TemporalType.DATE)
 	private Date dataPartida = new Date();
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIME)
 	private Date horaPartida = new Date();
 	
 	@Temporal(TemporalType.DATE)
 	private Date dataChegada = new Date();
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIME)
 	private Date horaChegada = new Date();
 	
 	@ManyToOne
