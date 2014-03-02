@@ -1,9 +1,16 @@
 package br.com.caelum.aeris.entity;
 
 import java.util.Date;
+
 import javax.persistence.*;
 
+import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.*;
+
 @Entity
+
+@Name("voo")
+@Scope(ScopeType.EVENT)
 public class Voo {
 	@Id
 	@GeneratedValue
