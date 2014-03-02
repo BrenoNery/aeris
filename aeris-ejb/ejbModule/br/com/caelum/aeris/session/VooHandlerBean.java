@@ -14,8 +14,12 @@ import javax.ejb.Remove;
  */
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext; //Anotação referente ao Contexto de Persistencia Extendido
-import javax.persistence.PersistenceContextType;
+/*
+ * 1* Import referente a anotação de Contexto de Persistencia Extendido
+ * 2* Import referente tipo de contexto de persistencia
+ */
+//import javax.persistence.PersistenceContext; // 1*
+//import javax.persistence.PersistenceContextType; // 2*
 
 import org.jboss.seam.annotations.Begin; // Anotação responsável identificar o método que inicia uma conversação long (Log Running Conversation)
 import org.jboss.seam.annotations.Logger;
@@ -60,7 +64,8 @@ public class VooHandlerBean implements VooHandler {
 	@DataModel
 	private List<Voo> voos;
 	
-	@PersistenceContext(type=PersistenceContextType.EXTENDED)
+	//@PersistenceContext(type=PersistenceContextType.EXTENDED)
+	@In
 	private EntityManager entityManager;
 	
 	@In(required=false)
@@ -69,6 +74,7 @@ public class VooHandlerBean implements VooHandler {
 	
 	public String salvarVoo() {
 		
+		log.info("entityManager = #0", entityManager);
 		this.trechoSelecionado.addVoo(this.voo);
 		log.info("Salvando voo #0", this.voo);
 		this.entityManager.persist(this.voo);
@@ -79,6 +85,7 @@ public class VooHandlerBean implements VooHandler {
 	@Begin
 	public String manipulaVoos(Trecho trecho) {
 		this.trechoSelecionado = this.entityManager.merge(trecho);
+		log.info("entityManager = #0", entityManager);
 		log.info("Trecho selecionado: #0", this.trechoSelecionado);
 		return "/voos.xhtml";
 	}
