@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.aeris.entity.Trecho;
+import br.com.caelum.aeris.exception.DAOException;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory; // Import da anotação "@Factory" (Padrão Fábrica)
@@ -48,6 +49,7 @@ public class TrechoHandler {
 	
 	public String remover() {
 		this.entityManager.remove(trechoSelecionado);
+		//throw new DAOException();
 		return "/trechos.xhtml";
 	}
 	
