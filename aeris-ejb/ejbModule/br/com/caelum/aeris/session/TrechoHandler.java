@@ -5,7 +5,7 @@ import java.util.*;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.aeris.entity.Trecho;
-import br.com.caelum.aeris.exception.DAOException;
+//import br.com.caelum.aeris.exception.DAOException; // Import referente ao tratamento de exceções
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory; // Import da anotação "@Factory" (Padrão Fábrica)
