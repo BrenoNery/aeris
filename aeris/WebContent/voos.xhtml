@@ -13,41 +13,61 @@
 						<h1>Cadastro de Voos</h1>
 					</f:facet>
 					
+					<rich:messages />
+					
 					<h:form>
-						Código:
-						<h:inputText value="#{voo.codigo}" />
+					
+					<!--<s:validateAll> -->
+					
+						<h:panelGrid style="width: 90%">
+							<s:decorate template="layout/edit.xhtml">
+									<ui:define name="label">Código:</ui:define>
+								  <h:inputText value="#{voo.codigo}" required="true"/>
+							</s:decorate>
+							
+							<rich:separator lineType="solid" height="2" />
+							<rich:spacer height="20" />
+							
+							<rich:panel style="height: 100px">
+								<f:facet name="header">
+									Origem: #{vooHandler.trechoSelecionado.origem.nome}
+								</f:facet>
+								<s:decorate template="layout/edit.xhtml">
+									<ui:define name="label">Dia:</ui:define>
+									<rich:calendar value="#{voo.dataPartida}" datePattern="dd/MM/yyyy" /><br />
+								</s:decorate>
+								<s:decorate template="layout/edit.xhtml">
+									<ui:define name="label">Hora:</ui:define>
+									<h:inputText value="#{voo.horaPartida}">
+										<f:convertDateTime type="time" pattern="HH:mm" />
+									</h:inputText>
+								</s:decorate>
+							</rich:panel>
+							
+							<rich:spacer height="20" />
+							
+							<rich:panel style="height: 100px">
+								<f:facet name="header">
+									Destino: #{vooHandler.trechoSelecionado.destino.nome}
+								</f:facet>
+								<s:decorate template="layout/edit.xhtml">
+									<ui:define name="label">Dia:</ui:define>
+									<rich:calendar value="#{voo.dataChegada}" datePattern="dd/MM/yyyy" /><br />
+								</s:decorate>
+								<s:decorate>
+									<ui:define name="label">Hora:</ui:define>
+									<h:inputText value="#{voo.horaChegada}">
+										<f:convertDateTime type="time" pattern="HH:mm" />
+									</h:inputText>
+								</s:decorate>
+							</rich:panel>
+							
+							<rich:spacer height="20" />
+							<h:commandButton action="#{vooHandler.salvarVoo}" value="Salvar" />
+						</h:panelGrid>
 						
-						<rich:separator lineType="solid" height="2" />
-						<rich:spacer height="20" />
-						
-						<rich:panel>
-							<f:facet name="header">
-								Origem: #{vooHandler.trechoSelecionado.origem.nome}
-							</f:facet>
-							Dia:
-							<rich:calendar value="#{voo.dataPartida}" datePattern="dd/MM/yyyy" /><br />
-							Hora:
-							<h:inputText value="#{voo.horaPartida}">
-								<f:convertDateTime type="time" pattern="HH:mm" />
-							</h:inputText>
-						</rich:panel>
-						
-						<rich:spacer height="20" />
-						
-						<rich:panel>
-							<f:facet name="header">
-								Destino: #{vooHandler.trechoSelecionado.destino.nome}
-							</f:facet>
-							Dia:
-							<rich:calendar value="#{voo.dataChegada}" datePattern="dd/MM/yyyy" /><br />
-							Hora:
-							<h:inputText value="#{voo.horaChegada}">
-								<f:convertDateTime type="time" pattern="HH:mm" />
-							</h:inputText>
-						</rich:panel>
-						
-						<rich:spacer height="20" />
-						<h:commandButton action="#{vooHandler.salvarVoo}" value="Salvar" />			
+					<!-- </s:validateAll> -->
+								
 					</h:form>
 					
 					<h:form>

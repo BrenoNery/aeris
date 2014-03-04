@@ -9,26 +9,34 @@
 	<ui:composition template="/layout/template.xhtml">
 			<ui:define name="body">
 				<h1>Cadastro de Trechos</h1>
+				
+					<rich:messages />
+				
 					<h:form>
+					<s:validateAll>
 						<h:panelGrid>
-					
-							Origem:
-							<h:selectOneMenu value="#{trechoHandler.trecho.origem}">
-								<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
-												noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
-							</h:selectOneMenu>
+							<s:decorate template="layout/edit.xhtml">					
+								Origem:
+								<h:selectOneMenu value="#{trechoHandler.trecho.origem}" required="true">
+									<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
+													noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
+								</h:selectOneMenu>
+							</s:decorate>
 							
-							Destino:
-							<h:selectOneMenu value="#{trechoHandler.trecho.destino}">
-								<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
-												noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
-							</h:selectOneMenu>
+							<s:decorate template="layout/edit.xhtml">	
+								Destino:
+								<h:selectOneMenu value="#{trechoHandler.trecho.destino}" required="true">
+									<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
+													noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
+								</h:selectOneMenu>							
+							</s:decorate>
 							
 							<h:inputHidden value="#{trechoHandler.trecho.id}" />
 							
 							<h:commandButton value="Salvar" actionListener="#{trechoHandler.salvar}" />
 					
 						</h:panelGrid>
+					</s:validateAll>
 					</h:form>
 					
 					<h:form>

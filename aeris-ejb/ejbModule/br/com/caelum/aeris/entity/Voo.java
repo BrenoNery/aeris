@@ -7,6 +7,8 @@ import javax.persistence.*;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
 
+import org.hibernate.validator.*;
+
 @Entity
 
 @Name("voo")
@@ -16,6 +18,10 @@ public class Voo {
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
+	@Length(min = 6, max = 6)
+	@Pattern(regex = "[A-Z]{2}-[0-9]{3}")
 	private String codigo;
 		
 	@Temporal(TemporalType.DATE)
@@ -25,11 +31,13 @@ public class Voo {
 	private Date horaPartida = new Date();
 	
 	@Temporal(TemporalType.DATE)
+	@Future // Impõe uma restrição de que a data deve ser futura
 	private Date dataChegada = new Date();
 	
 	@Temporal(TemporalType.TIME)
 	private Date horaChegada = new Date();
 	
+	@NotNull
 	@ManyToOne
 	private Trecho trecho;
 	

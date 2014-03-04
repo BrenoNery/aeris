@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import br.com.caelum.aeris.entity.Trecho;
 //import br.com.caelum.aeris.exception.DAOException; // Import referente ao tratamento de exceções
 
+
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory; // Import da anotação "@Factory" (Padrão Fábrica)
 import org.jboss.seam.annotations.In; // Import da anotação "@In" (Injeção de dependencia)
@@ -15,6 +16,7 @@ import org.jboss.seam.annotations.Name; // Import da anotação "@Name" (Criando u
 import org.jboss.seam.annotations.Scope; // Import da anotação "@Scope" (Criando um ManagedBean)
 import org.jboss.seam.annotations.datamodel.DataModel; // Import da anotação "@DataModel" (Converte um List<> de beans para um DataModel)
 import org.jboss.seam.annotations.datamodel.DataModelSelection;
+import org.jboss.seam.core.Events; // Import referente a geração de eventos (Listener / Observer)
 import org.jboss.seam.log.Log; // Import responsável por implementar a interface "Log" do JBoss Seam.
 
 @Name("trechoHandler")
@@ -25,6 +27,9 @@ public class TrechoHandler {
 	
 	@In
 	private EntityManager entityManager;
+	
+	@In
+	private Events events; 
 	
 	@DataModel
 	private List<Trecho> trechos;
@@ -40,6 +45,8 @@ public class TrechoHandler {
 		//System.out.println("Salvando: " + trecho);
 		log.info("Salvando: #0", this.trecho);
 		entityManager.merge(this.trecho);
+		
+		events.raiseEvent("novoTrecho", this.trecho);
 		this.trecho = new Trecho();
 	}
 	

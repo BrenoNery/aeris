@@ -1,7 +1,10 @@
 package br.com.caelum.aeris.entity;
 
 import java.util.*;
+
 import javax.persistence.*;
+
+import org.hibernate.validator.*; // Anotações de validação do Hibernate Validator
 
 @Entity
 public class Trecho {
@@ -9,9 +12,13 @@ public class Trecho {
 	@GeneratedValue
 	private Long id;
 	
+	@Column(length = 20)
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Localidade origem;
 	
+	@Column(length = 20)
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Localidade destino;
 	
