@@ -16,7 +16,7 @@
 					<s:validateAll>
 						<h:panelGrid>
 							<s:decorate template="layout/edit.xhtml">					
-								Origem:
+								<ui:define name="label">Origem:</ui:define>
 								<h:selectOneMenu value="#{trechoHandler.trecho.origem}" required="true">
 									<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
 													noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>
@@ -24,7 +24,7 @@
 							</s:decorate>
 							
 							<s:decorate template="layout/edit.xhtml">	
-								Destino:
+								<ui:define name="label">Destino:</ui:define>
 								<h:selectOneMenu value="#{trechoHandler.trecho.destino}" required="true">
 									<s:selectItems value="#{localidades}" var="localidade" label="#{localidade.nome}"
 													noSelectionLabel="Escolha um" hideNoSelectionLabel="true"/>

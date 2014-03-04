@@ -54,7 +54,7 @@
 									<ui:define name="label">Dia:</ui:define>
 									<rich:calendar value="#{voo.dataChegada}" datePattern="dd/MM/yyyy" /><br />
 								</s:decorate>
-								<s:decorate>
+								<s:decorate template="layout/edit.xhtml">
 									<ui:define name="label">Hora:</ui:define>
 									<h:inputText value="#{voo.horaChegada}">
 										<f:convertDateTime type="time" pattern="HH:mm" />

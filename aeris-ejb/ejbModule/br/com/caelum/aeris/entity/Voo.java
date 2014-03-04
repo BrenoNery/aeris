@@ -21,7 +21,7 @@ public class Voo {
 	@NotNull
 	@NotEmpty
 	@Length(min = 6, max = 6)
-	@Pattern(regex = "[A-Z]{2}-[0-9]{3}")
+	//@Pattern(regex = "[A-Z]{2}-[0-9]{3}") // A expressão regular não está validando corretamente
 	private String codigo;
 		
 	@Temporal(TemporalType.DATE)
