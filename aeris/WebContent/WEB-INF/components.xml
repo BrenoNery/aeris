@@ -58,4 +58,11 @@
    </bpm:jbpm>
    -->
 
+<!-- BRENO.NERY - APONTANDO PARA UM NOVO ARQUIVO DE MENSSAGENS DE VALIDAÇÃO -->
+<core:resource-loader>
+	<core:bundle-names>
+		<value>messages</value>
+	</core:bundle-names>
+</core:resource-loader>
+
 </components>
