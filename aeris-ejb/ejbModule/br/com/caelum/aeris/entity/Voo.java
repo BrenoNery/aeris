@@ -6,8 +6,9 @@ import javax.persistence.*;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
-
 import org.hibernate.validator.*;
+
+import br.com.caelum.aeris.service.Maiusculo;
 
 @Entity
 
@@ -22,6 +23,7 @@ public class Voo {
 	@NotEmpty
 	@Length(min = 6, max = 6)
 	//@Pattern(regex = "[A-Z]{2}-[0-9]{3}") // A expressão regular não está validando corretamente
+	@Maiusculo
 	private String codigo;
 		
 	@Temporal(TemporalType.DATE)
