@@ -40,14 +40,24 @@
     </exception>
     
     <exception class="org.jboss.seam.security.AuthorizationException">
+    <!-- 
         <redirect view-id="/error.xhtml">
             <message severity="error">You don't have permission to access this resource</message>
         </redirect>
+    -->
+    	<redirect view-id="/error.xhtml">
+    		<message>
+    			Você não possui privilégios suficientes para realizar esta operação
+    		</message>
+    	</redirect>
     </exception>
     
     <exception class="org.jboss.seam.security.NotLoggedInException">
         <redirect view-id="/login.xhtml">
-            <message severity="warn">#{messages['org.jboss.seam.NotLoggedIn']}</message>
+            <!-- <message severity="warn">#{messages['org.jboss.seam.NotLoggedIn']}</message> -->
+            <message>
+            	Você precisa fazer login para usar esta funcionalidade
+            </message>
         </redirect>
     </exception>
     

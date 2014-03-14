@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="/aeris/WebContent"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/aeris"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/aeris-ejb"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -21,7 +21,8 @@ import javax.persistence.EntityManager;
 //import javax.persistence.PersistenceContext; // 1*
 //import javax.persistence.PersistenceContextType; // 2*
 
-import org.jboss.seam.annotations.Begin; // Anotação responsável identificar o método que inicia uma conversação long (Log Running Conversation)
+
+import org.jboss.seam.annotations.Begin; // Anotação responsável identificar o método que inicia uma conversação longa (Log Running Conversation)
 import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.ScopeType;
@@ -30,8 +31,8 @@ import org.jboss.seam.log.Log;
 import org.jboss.seam.annotations.Factory;
 /*
  * As anotações abaixo permitem a utilização da técnica "Bijection" (Injetar e ejetar o objeto dos ecopos):
- * 1) @In : Injeto a dependencia do objeto "voo"
- * 2) @Out : Limpo a referencia do objeto no escopo do evento
+ * 1) @In : Injeta a dependencia do objeto "voo"
+ * 2) @Out : Limpa a referencia do objeto no escopo do evento
  */
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Out;
@@ -40,6 +41,7 @@ import org.jboss.seam.annotations.Out;
  */
 import org.jboss.seam.annotations.Destroy;
 import org.jboss.seam.annotations.datamodel.DataModel;
+import org.jboss.seam.annotations.security.Restrict; // Import referente a anotação @Restrict, responsável por incluir uma restrição de acordo com o usuário logado.
 
 import br.com.caelum.aeris.entity.*;
 
@@ -83,6 +85,8 @@ public class VooHandlerBean implements VooHandler {
 	}
 	
 	@Begin
+	
+	@Restrict("#{s:hasRole('empresa')}")
 	public String manipulaVoos(Trecho trecho) {
 		this.trechoSelecionado = this.entityManager.merge(trecho);
 		log.info("entityManager = #0", entityManager);
